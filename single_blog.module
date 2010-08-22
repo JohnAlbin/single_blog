@@ -101,6 +101,8 @@ function single_blog_block_view($delta = '') {
           '#url' => url('blog'),
           '#title' => t('Read the latest blog entries.'),
         );
+        // Add a CSS file to style the block.
+        $block['content']['#attached']['css'][] = drupal_get_path('module', 'single_blog') . '/single-blog.css';
       }
     }
   }
