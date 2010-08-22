@@ -10,6 +10,7 @@
 // make these settings configurable.
 define('SINGLE_BLOG_NODE_TYPE', 'article');
 define('SINGLE_BLOG_LIST_COUNT', 5);
+define('SINGLE_BLOG_DATE_FORMAT', 'F d, Y');
 
 /**
  * Returns a list of blog entries.
@@ -80,9 +81,8 @@ function single_blog_block_view($delta = '') {
       foreach ($result as $node) {
         $items[] = array(
           'data' => array(
-            '#type' => 'link',
-            '#title' => $node->title,
-            '#href' => 'node/' . $node->nid,
+            '#theme' => 'single_blog_block_item',
+            '#node' => $node,
           ),
           'class' => array('node-' . $node->nid),
         );
@@ -122,4 +122,41 @@ function single_blog_item_list_child_render($elements) {
     }
   }
   return $elements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function single_blog_theme($existing, $type, $theme, $path) {
+  return array(
+    'single_blog_block_item' => array(
+      'variables' => array(
+        'node' => array(),
+      ),
+      'template' => 'single-blog-block-item',
+    ),
+  );
+}
+
+/**
+ * Preprocesses single blog block item variables.
+ */
+function template_preprocess_single_blog_block_item(&$variables) {
+  $node = $variables['node'];
+
+  // Create a renderable array for the title.
+  $variables['title'] = array(
+    '#type'  => 'link',
+    '#title' => $node->title,
+    '#href'  => 'node/' . $node->nid,
+  );
+
+  // Format the creation date of the node.
+  $variables['created'] = $node->created;
+  $variables['date'] = format_date($node->created, 'custom', SINGLE_BLOG_DATE_FORMAT);
+
+  // Store uid in a variable for themer convenience.
+  $variables['uid'] = $node->uid;
+  // Load the account object with the node's creator and theme the result.
+  $variables['name'] = theme('username', array('account' => user_load($node->uid)));
 }
