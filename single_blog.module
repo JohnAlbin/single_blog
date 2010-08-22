@@ -53,7 +53,7 @@ function single_blog_block_info() {
 /**
  * Implements hook_block_view().
  *
- * First draft!
+ * Second draft!
  *
  * @pararm $delta
  *   The name of the requested block.
