@@ -1,0 +1,5 @@
+// $Id$
+
+Single blog 7.x-1.0
+-------------------
+- Initial version. single_blog_block_view() does not comply with D7 standards.
