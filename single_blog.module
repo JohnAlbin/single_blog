@@ -79,7 +79,11 @@ function single_blog_block_view($delta = '') {
       $items = array();
       foreach ($result as $node) {
         $items[] = array(
-          'data' => l($node->title, 'node/' . $node->nid),
+          'data' => array(
+            '#type' => 'link',
+            '#title' => $node->title,
+            '#href' => 'node/' . $node->nid,
+          ),
           'class' => array('node-' . $node->nid),
         );
       }
@@ -89,10 +93,25 @@ function single_blog_block_view($delta = '') {
         $block['content']['list'] = array(
           '#theme' => 'item_list__single_blog',
           '#items' => $items,
+          '#pre_render' => array('single_blog_item_list_child_render'),
         );
       }
     }
   }
 
   return $block;
+}
+
+/**
+ * Render the child elements of theme_item_list() before its data is themed.
+ */
+function single_blog_item_list_child_render($elements) {
+  foreach (array_keys($elements['#items']) AS $key) {
+    // Take the renderable array that we set in single_blog_block_view() and
+    // render it into the string that theme_item_list() expects.
+    if (is_array($elements['#items'][$key]['data'])) {
+      $elements['#items'][$key]['data'] = drupal_render($elements['#items'][$key]['data']);
+    }
+  }
+  return $elements;
 }
