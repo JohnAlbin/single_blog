@@ -1,5 +1,9 @@
 // $Id$
 
+Single blog 7.x-3.0
+-------------------
+- Added single_blog_block_item.tpl implementation.
+
 Single blog 7.x-2.0
 -------------------
 - Added basic CSS styling.
