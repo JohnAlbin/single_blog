@@ -1,5 +1,14 @@
 // $Id$
 
+Single blog 7.x-2.0
+-------------------
+- Added basic CSS styling.
+- Added link to "blog" page.
+  @TODO the link is currently broken; implement the page with hook_menu().
+- Added single_blog_item_list_child_render() to render the data elements of
+  theme_item_list().
+- Converted single_blog_block_view() to return a renderable array.
+
 Single blog 7.x-1.0
 -------------------
 - Initial version. single_blog_block_view() does not comply with D7 standards.
