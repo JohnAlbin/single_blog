@@ -95,6 +95,12 @@ function single_blog_block_view($delta = '') {
           '#items' => $items,
           '#pre_render' => array('single_blog_item_list_child_render'),
         );
+        // Add a link to the full list of blog entries.
+        $block['content']['more'] = array(
+          '#theme' => 'more_link',
+          '#url' => url('blog'),
+          '#title' => t('Read the latest blog entries.'),
+        );
       }
     }
   }
