@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Enables a single-user blog.
+ * Enables a single blog for an individual or multiple users.
  */
 
 // After you learn Form API in Chapter 5, you'll be able to
