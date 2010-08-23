@@ -1,5 +1,5 @@
 <?php
-// $Id: menu-block-wrapper.tpl.php,v 1.9 2010/03/26 21:03:29 johnalbin Exp $
+// $Id$
 
 /**
  * @file
