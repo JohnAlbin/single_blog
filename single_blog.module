@@ -155,8 +155,9 @@ function template_preprocess_single_blog_block_item(&$variables) {
   $variables['created'] = $node->created;
   $variables['date'] = format_date($node->created, 'custom', SINGLE_BLOG_DATE_FORMAT);
 
-  // Store uid in a variable for themer convenience.
-  $variables['uid'] = $node->uid;
-  // Load the account object with the node's creator and theme the result.
-  $variables['name'] = theme('username', array('account' => user_load($node->uid)));
+  // Load the account object with the node's creator and store in a variable for
+  // themer convenience.
+  $variables['user'] = user_load($node->uid);
+  // Theme the username.
+  $variables['name'] = theme('username', array('account' => $variables['user']));
 }

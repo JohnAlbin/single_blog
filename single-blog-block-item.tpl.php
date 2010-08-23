@@ -14,7 +14,7 @@
  * The following variables are provided for contextual information.
  * - $node: Partial node object. Contains data that may not be safe.
  * - $created: Time the node was published formatted in Unix timestamp.
- * - $uid: User ID of the node author.
+ * - $user: The user object of the node author.
  *
  * @see template_preprocess_single_blog_block_item()
  */
