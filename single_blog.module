@@ -131,7 +131,7 @@ function single_blog_theme($existing, $type, $theme, $path) {
   return array(
     'single_blog_block_item' => array(
       'variables' => array(
-        'node' => array(),
+        'node' => NULL,
       ),
       'template' => 'single-blog-block-item',
     ),
