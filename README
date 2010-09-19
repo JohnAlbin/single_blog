@@ -11,5 +11,5 @@ module, but re-purposed for a single blog that uses Drupal’s default article
 content type.
 
 This is an example module for Chapter 4 of the upcoming book, Learning Drupal 7
-Development, by Sam Boyer, Matt Butcher, Greg Dunlap, Matt Farina, Larry
-Garfield, Ken Rickard and John Albin Wilkins.
+Development, by Matt Butcher, Greg Dunlap, Matt Farina, Larry Garfield, Ken
+Rickard and John Albin Wilkins.
