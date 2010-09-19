@@ -13,6 +13,29 @@ define('SINGLE_BLOG_LIST_COUNT', 5);
 define('SINGLE_BLOG_DATE_FORMAT', 'F d, Y');
 
 /**
+ * Implements hook_menu().
+ */
+function single_blog_menu() {
+  // Specify that the "blog" url will be handled by this module.
+  $items['blog'] = array(
+    'title' => 'Blog',
+    'page callback' => 'single_blog_page_last',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+    'file' => 'single_blog.pages.inc',
+  );
+  $items['blog/feed'] = array(
+    'title' => 'Blog',
+    'page callback' => 'single_blog_feed_last',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'single_blog.pages.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Returns a list of blog entries.
  *
  * @param $number
